@@ -75,7 +75,7 @@ const AdminLogin = () => {
                 onChange={handleChange}
                 required
                 className="input-field"
-                placeholder="admin@bluefin.com"
+                placeholder="admin@example.com"
               />
             </div>
 
