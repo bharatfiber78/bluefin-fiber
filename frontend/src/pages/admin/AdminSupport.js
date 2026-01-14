@@ -5,7 +5,7 @@ import Toast from '../../components/Toast';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import StatCard from '../../components/StatCard';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://bluefin-6dzk.onrender.com/api';
 
 const AdminSupport = () => {
   const [tickets, setTickets] = useState([]);

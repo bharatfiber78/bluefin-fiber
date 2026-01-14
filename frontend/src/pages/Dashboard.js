@@ -8,7 +8,7 @@ import StatCard from '../components/StatCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Toast from '../components/Toast';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://bluefin-6dzk.onrender.com/api';
 
 const Dashboard = () => {
   const { user } = useAuth();

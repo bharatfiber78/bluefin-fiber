@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://bluefin-6dzk.onrender.com/api';
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
