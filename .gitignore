@@ -49,4 +49,9 @@ coverage/
 # Seed files with credentials
 backend/scripts/seedData.js
 backend/scripts/seedProduction.js
+backend/scripts/forceSeedPlans.js
+backend/scripts/checkPlans.js
+
+# Scripts with sensitive data
+start.sh
 
