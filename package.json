@@ -7,7 +7,12 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon backend/server.js",
     "client": "cd frontend && npm start",
-    "install-all": "npm install && cd frontend && npm install",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm install && npm run build",
+    "build:frontend": "cd frontend && npm install && npm run build",
+    "build:production": "npm run build:backend && npm run build:frontend:production",
+    "build:frontend:production": "cd frontend && npm install && npm run build:production",
+    "install-all": "npm install && cd frontend && npm install && cd backend && npm install",
     "seed": "node backend/scripts/seedData.js",
     "seed:production": "node backend/scripts/seedProduction.js"
   },

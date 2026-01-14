@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "comment": "This file is for reference. For separate deployment, use frontend/vercel.json",
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "framework": "create-react-app",
   "builds": [
     {
       "src": "frontend/package.json",

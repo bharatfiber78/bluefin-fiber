@@ -1,11 +1,8 @@
-# This file is for reference. For separate deployment, use backend/render.yaml
-# Deploy the backend folder separately on Render with rootDir: backend
 services:
   - type: web
     name: bluefin-backend
     env: node
     plan: free
-    rootDir: backend
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:

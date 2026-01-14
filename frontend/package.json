@@ -12,6 +12,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:production": "GENERATE_SOURCEMAP=false react-scripts build",
+    "prebuild": "echo 'Building frontend for production...'",
+    "postbuild": "echo 'Frontend build complete'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
