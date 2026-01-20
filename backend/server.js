@@ -20,10 +20,10 @@ app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   }
-  // Content Security Policy
+  // Content Security Policy (relaxed for API server)
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' *"
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src *"
   );
   // Referrer Policy
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -43,15 +43,29 @@ const corsOptions = {
       return callback(null, true);
     }
     
-    // In production, check against allowed origins
+    // Default allowed origins (including Vercel domains)
+    const defaultOrigins = [
+      'http://localhost:3000',
+      'https://bluefin-fiber-new.vercel.app',
+      'https://bluefin-fiber.vercel.app',
+    ];
+    
+    // Get allowed origins from environment or use defaults
     const allowedOrigins = process.env.ALLOWED_ORIGINS
       ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
-      : ['http://localhost:3000'];
+      : defaultOrigins;
     
+    // Check exact match first
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
-    } else {
+    } 
+    // Check if origin matches Vercel pattern (allow all *.vercel.app domains)
+    else if (origin && /^https:\/\/.*\.vercel\.app$/.test(origin)) {
+      callback(null, true);
+    } 
+    else {
       console.log(`CORS blocked origin: ${origin}`);
+      console.log(`Allowed origins: ${allowedOrigins.join(', ')}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
