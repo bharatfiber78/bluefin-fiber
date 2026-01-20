@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './config/axios'; // Initialize axios configuration
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
